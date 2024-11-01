@@ -233,8 +233,8 @@ int main(int argc, char **argv)
     }
     else
     {
-        kf_path = "/home/baselines/algorithms/orb/KeyframeTrajectory.txt";
-        f_path = "/home/baselines/algorithms/orb/CameraTrajectory.txt";
+        const string kf_path = "/home/baselines/algorithms/orb/KeyframeTrajectory.txt";
+        const string f_path = "/home/baselines/algorithms/orb/CameraTrajectory.txt";
         SLAM.SaveTrajectoryEuRoC(f_path);
         SLAM.SaveKeyFrameTrajectoryEuRoC(kf_path);
     }
