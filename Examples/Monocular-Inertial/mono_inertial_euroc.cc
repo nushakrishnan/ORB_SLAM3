@@ -235,15 +235,17 @@ int main(int argc, char *argv[])
     // Save camera trajectory
     if (bFileName)
     {
-        const string kf_file =  "kf_" + string(argv[argc-1]) + ".txt";
-        const string f_file =  "f_" + string(argv[argc-1]) + ".txt";
+        const string kf_file = "/home/baselines/algorithms/orb/kf_" + string(argv[argc - 1]) + ".txt";
+        const string f_file = "/home/baselines/algorithms/orb/f_" + string(argv[argc - 1]) + ".txt";
         SLAM.SaveTrajectoryEuRoC(f_file);
         SLAM.SaveKeyFrameTrajectoryEuRoC(kf_file);
     }
     else
     {
-        SLAM.SaveTrajectoryEuRoC("CameraTrajectory.txt");
-        SLAM.SaveKeyFrameTrajectoryEuRoC("KeyFrameTrajectory.txt");
+        kf_path = "/home/baselines/algorithms/orb/KeyframeTrajectory.txt";
+        f_path = "/home/baselines/algorithms/orb/CameraTrajectory.txt";
+        SLAM.SaveTrajectoryEuRoC(f_path);
+        SLAM.SaveKeyFrameTrajectoryEuRoC(kf_path);
     }
 
     return 0;
