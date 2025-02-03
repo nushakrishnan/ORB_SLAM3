@@ -2492,7 +2492,7 @@ void Tracking::MonocularInitialization()
         int nmatches = matcher.SearchForInitialization(mInitialFrame,mCurrentFrame,mvbPrevMatched,mvIniMatches,100);
 
         // Check if there are enough correspondences
-        if(nmatches<100)
+        if(nmatches<20)
         {
             mbReadyToInitializate = false;
             return;
@@ -3036,7 +3036,7 @@ bool Tracking::TrackLocalMap()
 
     if (mSensor == System::IMU_MONOCULAR)
     {
-        if((mnMatchesInliers<15 && mpAtlas->isImuInitialized())||(mnMatchesInliers<50 && !mpAtlas->isImuInitialized()))
+        if((mnMatchesInliers<10 && mpAtlas->isImuInitialized())||(mnMatchesInliers<10 && !mpAtlas->isImuInitialized()))
         {
             return false;
         }
