@@ -130,10 +130,11 @@ int main(int argc, char *argv[])
         cv::Mat im;
         vector<ORB_SLAM3::IMU::Point> vImuMeas;
         proccIm = 0;
+        cv::Ptr<cv::CLAHE> clahe = cv::createCLAHE(3.0, cv::Size(8, 8));
         for(int ni=0; ni<nImages[seq]; ni++, proccIm++)
         {
             // Read image from file
-            im = cv::imread(vstrImageFilenames[seq][ni],cv::IMREAD_UNCHANGED); //CV_LOAD_IMAGE_UNCHANGED);
+            im = cv::imread(vstrImageFilenames[seq][ni],cv::IMREAD_GRAYSCALE); //CV_LOAD_IMAGE_UNCHANGED);
 
             double tframe = vTimestampsCam[seq][ni];
 
@@ -143,6 +144,9 @@ int main(int argc, char *argv[])
                      <<  vstrImageFilenames[seq][ni] << endl;
                 return 1;
             }
+
+            // clahe
+            clahe->apply(im,im);
 
             if(imageScale != 1.f)
             {
