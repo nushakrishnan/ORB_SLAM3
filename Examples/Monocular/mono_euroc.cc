@@ -191,6 +191,7 @@ int main(int argc, char **argv)
     {
         const string f_file = string(argv[argc - 1]);
         SLAM.SaveTrajectoryEuRoC(f_file);
+        SLAM.SaveKeyFrameTrajectoryEuRoC(kf_path);
     }
     else
     {
