@@ -141,11 +141,12 @@ int main(int argc, char **argv)
         double t_track = 0.f;
         int num_rect = 0;
         int proccIm = 0;
+        cv::Ptr<cv::CLAHE> clahe = cv::createCLAHE(3.0, cv::Size(8, 8));
         for(int ni=0; ni<nImages[seq]; ni++, proccIm++)
         {
             // Read left and right images from file
-            imLeft = cv::imread(vstrImageLeft[seq][ni],cv::IMREAD_UNCHANGED);
-            imRight = cv::imread(vstrImageRight[seq][ni],cv::IMREAD_UNCHANGED);
+            imLeft = cv::imread(vstrImageLeft[seq][ni],cv::IMREAD_GRAYSCALE);
+            imRight = cv::imread(vstrImageRight[seq][ni],cv::IMREAD_GRAYSCALE);
 
             if(imLeft.empty())
             {
@@ -153,6 +154,9 @@ int main(int argc, char **argv)
                      << string(vstrImageLeft[seq][ni]) << endl;
                 return 1;
             }
+
+            clahe->apply(imLeft,imLeft);
+            clahe->apply(imRight,imRight);
 
             if(imRight.empty())
             {
