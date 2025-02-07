@@ -124,7 +124,6 @@ int main(int argc, char *argv[])
     double t_track = 0.f;
 
     int proccIm=0;
-    cv::Ptr<cv::CLAHE> clahe = cv::createCLAHE(3.0, cv::Size(8, 8));
     for (seq = 0; seq<num_seq; seq++)
     {
 
@@ -132,6 +131,7 @@ int main(int argc, char *argv[])
         cv::Mat im;
         vector<ORB_SLAM3::IMU::Point> vImuMeas;
         proccIm = 0;
+        cv::Ptr<cv::CLAHE> clahe = cv::createCLAHE(3.0, cv::Size(8, 8));
         for(int ni=0; ni<nImages[seq]; ni++, proccIm++)
         {
             // Read image from file
