@@ -201,6 +201,7 @@ add_executable(mono_euroc
         Examples/Monocular/mono_euroc.cc)
 target_link_libraries(mono_euroc ${PROJECT_NAME})
 
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/Tools)
 add_executable(extract_map_points
         Tools/extract_map_points.cc)
 target_link_libraries(extract_map_points ${PROJECT_NAME})
