@@ -1148,6 +1148,7 @@ void LocalMapping::RequestFinish()
 {
     unique_lock<mutex> lock(mMutexFinish);
     mbFinishRequested = true;
+    mbAbortBA = true;
 }
 
 bool LocalMapping::CheckFinish()
